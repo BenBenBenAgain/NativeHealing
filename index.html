@@ -24,7 +24,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:24px 5
 .nav-cta:hover{background:var(--ink);}
 .hero{display:grid;grid-template-columns:1fr 1fr;height:92vh;max-height:900px;}
 .hero-img{overflow:hidden;}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
 .hero-content{background:var(--olive);padding:48px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
 .hero-content::before{content:'NH';position:absolute;bottom:-40px;right:-20px;font-family:'Cormorant Garamond',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;}
 .hero-eyebrow{font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--blush);opacity:0.7;display:flex;align-items:center;gap:10px;margin-bottom:20px;}
@@ -108,6 +108,36 @@ footer{background:var(--ink);padding:64px 56px 0;}
 .footer-links a:hover{opacity:0.9;}
 .footer-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;}
 .footer-copy{font-size:11px;color:var(--cream);opacity:0.25;letter-spacing:0.05em;}
+
+@media (max-width: 768px) {
+  nav{padding:16px 20px;}
+  .nav-links{display:none;}
+  .nav-cta{font-size:9px;padding:9px 16px;letter-spacing:0.18em;}
+  .hero{grid-template-columns:1fr;height:auto;max-height:none;}
+  .hero-img{height:70vw;min-height:320px;}
+  .hero-img img{object-position:center 60%;}
+  .hero-content{padding:40px 24px 48px;justify-content:center;}
+  .hero-h1{font-size:42px;line-height:1.08;margin-bottom:16px;}
+  .hero-tagline{font-size:12px;margin-bottom:32px;}
+  .btn-primary{padding:12px 22px;font-size:9px;}
+  .intro{grid-template-columns:1fr;padding:48px 24px;gap:32px;}
+  .intro-stat{display:none;}
+  .services{padding:64px 20px;}
+  .services-grid{grid-template-columns:1fr;}
+  .section-title{font-size:36px;}
+  .philosophy{grid-template-columns:1fr;padding:72px 24px;gap:40px;}
+  .phil-quote{font-size:32px;}
+  .gifts{grid-template-columns:1fr;padding:64px 24px;gap:40px;}
+  .gifts-h{font-size:36px;}
+  .gift-mock{width:100%;max-width:280px;margin:0 auto;}
+  .booking{padding:72px 24px;}
+  .booking-h{font-size:40px;}
+  .booking-actions{flex-direction:column;gap:12px;}
+  .btn-large,.btn-outline{width:100%;text-align:center;padding:14px 24px;}
+  footer{padding:48px 24px 0;}
+  .footer-grid{grid-template-columns:1fr;gap:36px;}
+  .footer-bottom{flex-direction:column;gap:8px;padding:20px 0;text-align:center;}
+}
 </style>
 </head>
 <body>
