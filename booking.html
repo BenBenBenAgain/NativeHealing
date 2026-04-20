@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Session — Native Healing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--olive:#5F6F5A;--cream:#F4EFE8;--tan:#C79A7A;--sage:#8FA27E;--blush:#E3B8A5;--ink:#2E2B26;--clay:#D8C2A8;--taupe:#9C7C67;}
+body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 56px;border-bottom:0.5px solid var(--clay);background:var(--cream);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:15px;letter-spacing:0.25em;text-transform:uppercase;color:var(--olive);text-decoration:none;}
+.nav-logo span{display:block;font-family:'Jost',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--taupe);margin-top:2px;}
+.nav-back{font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--taupe);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;}
+.nav-back:hover{color:var(--tan);}
+.book-header{background:var(--olive);padding:64px 56px 56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;}
+.book-eyebrow{font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--blush);opacity:0.7;display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.book-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--blush);opacity:0.5;}
+.book-h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:60px;line-height:1.05;color:var(--cream);}
+.book-h1 em{font-style:italic;color:var(--blush);}
+.book-note{font-size:14px;color:var(--cream);opacity:0.55;line-height:1.9;margin-bottom:24px;}
+.book-steps{display:flex;flex-direction:column;gap:12px;}
+.book-step{display:flex;align-items:center;gap:14px;}
+.step-num{width:24px;height:24px;border:0.5px solid rgba(227,184,165,0.4);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.1em;color:var(--blush);flex-shrink:0;}
+.step-txt{font-family:'Jost',sans-serif;font-weight:300;font-size:12px;letter-spacing:0.08em;color:var(--cream);opacity:0.6;}
+.book-body{display:grid;grid-template-columns:380px 1fr;min-height:700px;}
+.treatment-panel{background:var(--cream);border-right:0.5px solid var(--clay);padding:40px 0;overflow-y:auto;max-height:800px;}
+.panel-label{font-family:'Jost',sans-serif;font-weight:500;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--sage);padding:0 32px;margin-bottom:24px;}
+.titem{padding:20px 32px;border-bottom:0.5px solid var(--clay);cursor:pointer;transition:background 0.2s;}
+.titem:hover{background:rgba(95,111,90,0.04);}
+.titem.active{background:var(--olive);}
+.titem.active .t-name,.titem.active .t-price{color:var(--cream);}
+.titem.active .t-meta,.titem.active .t-dur{color:rgba(227,184,165,0.6);}
+.t-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:var(--ink);line-height:1.2;margin-bottom:4px;transition:color 0.2s;}
+.t-meta{font-family:'Jost',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--taupe);transition:color 0.2s;}
+.t-right{text-align:right;flex-shrink:0;}
+.t-price{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--tan);transition:color 0.2s;}
+.t-dur{font-family:'Jost',sans-serif;font-weight:400;font-size:9px;letter-spacing:0.15em;color:var(--taupe);margin-top:2px;transition:color 0.2s;}
+.t-badge{display:inline-block;font-family:'Jost',sans-serif;font-weight:400;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--tan);background:rgba(199,154,122,0.12);border:0.5px solid rgba(199,154,122,0.3);padding:2px 7px;margin-top:4px;}
+.acuity-panel{background:var(--cream);display:flex;flex-direction:column;}
+.acuity-selected{padding:32px 40px 28px;border-bottom:0.5px solid var(--clay);}
+.sel-label{font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--sage);margin-bottom:8px;}
+.sel-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--olive);margin-bottom:4px;}
+.sel-name em{font-style:italic;color:var(--tan);}
+.sel-meta{font-family:'Jost',sans-serif;font-weight:300;font-size:12px;color:var(--taupe);letter-spacing:0.08em;margin-bottom:16px;}
+.sel-desc{font-size:13px;line-height:1.85;color:var(--ink);opacity:0.65;max-width:560px;}
+.acuity-embed{flex:1;}
+.acuity-embed iframe{width:100%;min-height:650px;border:none;display:block;}
+.book-footer{background:var(--ink);padding:24px 56px;display:flex;align-items:center;justify-content:space-between;}
+.book-footer-brand{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);opacity:0.4;}
+.book-footer-links{display:flex;gap:28px;}
+.book-footer-links a{font-family:'Jost',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);opacity:0.3;text-decoration:none;transition:opacity 0.2s;}
+.book-footer-links a:hover{opacity:0.7;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Native Healing<span>Massage &amp; Wellness</span></a>
+  <a href="index.html" class="nav-back">← Back to site</a>
+</nav>
+
+<header class="book-header">
+  <div>
+    <div class="book-eyebrow">Online Booking</div>
+    <h1 class="book-h1">Book your<br><em>session</em></h1>
+  </div>
+  <div>
+    <p class="book-note">Each session is shaped around you. Select a treatment to see available times and complete your booking securely online.</p>
+    <div class="book-steps">
+      <div class="book-step"><div class="step-num">1</div><span class="step-txt">Choose your treatment</span></div>
+      <div class="book-step"><div class="step-num">2</div><span class="step-txt">Select a date and time</span></div>
+      <div class="book-step"><div class="step-num">3</div><span class="step-txt">Confirm your details</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="book-body">
+  <div class="treatment-panel">
+    <div class="panel-label">Select a treatment</div>
+    <div class="titem active" data-name="Intuitive Massage" data-meta="Body &amp; Soft Tissue" data-dur="60 min" data-price="A$145" data-desc="Guided by instinct, shaped by your body in the moment. Pressure, pace, and technique adapt as the session unfolds — a truly personalised experience that goes wherever your body needs." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Intuitive Massage</div><div class="t-meta">Body &amp; Soft Tissue</div></div><div class="t-right"><div class="t-price">A$145</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Revive &amp; Restore" data-meta="Deep Tissue · Zenthai Shiatsu" data-dur="60 min" data-price="A$160" data-desc="Deep tissue work woven with Zenthai Shiatsu. Targeted pressure, stretch, and energy-balancing movement to release stiffness and restore the body fully." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Revive &amp; Restore</div><div class="t-meta">Deep Tissue · Zenthai Shiatsu</div></div><div class="t-right"><div class="t-price">A$160</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Glow &amp; Grow" data-meta="Pregnancy Massage" data-dur="60 min" data-price="A$148" data-desc="Designed for every stage of pregnancy. Gentle, soothing techniques ease discomfort and swelling, with specially selected oils and a fully supportive setup." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Glow &amp; Grow</div><div class="t-meta">Pregnancy Massage</div></div><div class="t-right"><div class="t-price">A$148</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Massage &amp; Sound Healing" data-meta="Bodywork · Vibrational Therapy" data-dur="60 min" data-price="A$148" data-desc="Touch and vibration in dialogue. Massage releases tension while Tibetan bowls, crystal bowls, and ocean drums restore energy flow and deep stillness." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Massage &amp; Sound Healing</div><div class="t-meta">Bodywork · Vibrational Therapy</div></div><div class="t-right"><div class="t-price">A$148</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Empowered Wellness" data-meta="Perimenopause · Menopause" data-dur="60 min" data-price="A$153" data-desc="Designed to support the body through perimenopause and menopause. Gentle techniques and calming oils to ease hot flashes, tension, and restore vitality." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Empowered Wellness</div><div class="t-meta">Perimenopause · Menopause</div></div><div class="t-right"><div class="t-price">A$153</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Sculpt &amp; Enhance" data-meta="Face Massage" data-dur="60 min" data-price="A$149" data-desc="Targeted lifting techniques sculpt and tone the face. Reduces puffiness, improves circulation, and enhances natural contours for a radiant complexion." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Sculpt &amp; Enhance</div><div class="t-meta">Face Massage</div></div><div class="t-right"><div class="t-price">A$149</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="The Inner Sculpt™ TMJ Ritual" data-meta="Signature Facial Deep Work" data-dur="60 min" data-price="A$210" data-desc="A luxurious deep-work facial ritual. Buccal techniques, neck and shoulder release, and infrared light target jaw tension and TMJD — therapeutic, intentional, indulgent." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">The Inner Sculpt&#8482;</div><div class="t-meta">Signature · TMJ Ritual</div><div class="t-badge">Signature</div></div><div class="t-right"><div class="t-price">A$210</div><div class="t-dur">60 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Intuitive Massage — 90 min" data-meta="Extended · Body &amp; Soft Tissue" data-dur="90 min" data-price="A$195" data-desc="The full intuitive experience — more time, deeper listening, greater space for the body to fully arrive and release. Ideal when 60 minutes isn't enough." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Intuitive Massage</div><div class="t-meta">Extended · 90 min</div></div><div class="t-right"><div class="t-price">A$195</div><div class="t-dur">90 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Revive &amp; Restore — 90 min" data-meta="Extended · Deep Tissue · Zenthai" data-dur="90 min" data-price="A$230" data-desc="The extended version of the most powerful recovery treatment. More time for the body to fully unwind, restore, and come back into balance." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Revive &amp; Restore</div><div class="t-meta">Extended · 90 min</div></div><div class="t-right"><div class="t-price">A$230</div><div class="t-dur">90 min</div></div></div>
+    </div>
+    <div class="titem" data-name="Ritual Reset" data-meta="Nervous System Healing" data-dur="2 hours" data-price="A$295" data-desc="Lymphatic massage, TMJ release, scalp therapy, breathwork, sound healing, and ASMR-style touch. A full nervous system reset for burnout, anxiety, and overwhelm." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Ritual Reset</div><div class="t-meta">Nervous System Healing</div><div class="t-badge">Signature</div></div><div class="t-right"><div class="t-price">A$295</div><div class="t-dur">2 hrs</div></div></div>
+    </div>
+    <div class="titem" data-name="Oshun's Flow Head Spa" data-meta="Sacred Head Spa Ritual" data-dur="60 min" data-price="A$189" data-desc="A sacred ritual blending Japanese head spa tradition with sound healing, scalp detox, and ceremonial tea pouring. A transformative journey from mind to soul." data-url="https://layanatherapies.as.me/schedule/948c5354">
+      <div class="t-row"><div><div class="t-name">Oshun&#8217;s Flow</div><div class="t-meta">Head Spa Ritual</div></div><div class="t-right"><div class="t-price">A$189</div><div class="t-dur">60 min</div></div></div>
+    </div>
+  </div>
+
+  <div class="acuity-panel">
+    <div class="acuity-selected">
+      <div class="sel-label">Selected treatment</div>
+      <div class="sel-name" id="sel-name">Intuitive <em>Massage</em></div>
+      <div class="sel-meta" id="sel-meta">60 min &nbsp;·&nbsp; A$145 &nbsp;·&nbsp; Body &amp; Soft Tissue</div>
+      <p class="sel-desc" id="sel-desc">Guided by instinct, shaped by your body in the moment. Pressure, pace, and technique adapt as the session unfolds — a truly personalised experience that goes wherever your body needs.</p>
+    </div>
+    <div class="acuity-embed">
+      <iframe id="acuity-iframe" src="https://layanatherapies.as.me/schedule/948c5354?embed=1" title="Book a session with Native Healing" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="book-footer">
+  <span class="book-footer-brand">Native Healing</span>
+  <div class="book-footer-links">
+    <a href="index.html#services">All treatments</a>
+    <a href="mailto:hello@nativehealing.com">Contact</a>
+    <a href="index.html">Back to site</a>
+  </div>
+</div>
+
+<script>
+const items = document.querySelectorAll('.titem');
+const selName = document.getElementById('sel-name');
+const selMeta = document.getElementById('sel-meta');
+const selDesc = document.getElementById('sel-desc');
+const iframe = document.getElementById('acuity-iframe');
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    items.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    const name = item.dataset.name;
+    const words = name.split(' ');
+    const last = words.pop();
+    selName.innerHTML = (words.length ? words.join(' ') + ' <em>' + last + '</em>' : '<em>' + last + '</em>');
+    selMeta.textContent = item.dataset.dur + ' · ' + item.dataset.price + ' · ' + item.dataset.meta;
+    selDesc.textContent = item.dataset.desc;
+    iframe.src = item.dataset.url + '?embed=1';
+  });
+});
+</script>
+</body>
+</html>
